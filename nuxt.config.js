@@ -17,6 +17,16 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto'  }
+    ],
+    script: [
+      {
+        src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
+        type: "text/javascript"
+      },
+      {
+        src: "https://apis.google.com/js/client.js",
+        type: "text/javascript"
+      }
     ]
   },
 
@@ -28,7 +38,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    //{src: '@/plugins/load-script.js', ssr: false}
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

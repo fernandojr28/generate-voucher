@@ -43,7 +43,16 @@ export default {
             voucherPreview: [],
             pointer: -1,
             //
-            dialogVisible: false
+            dialogVisible: false,
+            removeValFrom: [
+                'Credimás: xxxx-xxxx-xxxx-0478',
+                'Titular: JUAREZ RODRIGUEZ JULIO FERNANDO',
+                'Pagado desde: Ahorro soles 191-37199337-0-86',
+                'Monto pagado al cambio: US$ 0.00',
+                'Tipo de cambio: S/ 0.00',
+                ':',
+
+            ]
         }
     },
     methods: {
@@ -51,11 +60,13 @@ export default {
             this.voucherText = ''
         },
         onGenerateVoucher() {
-            const separadores = ['\n\n','\t','\n'],
-            res = this.voucherText.split (new RegExp (separadores.join('|'),'g')).filter(x=>x)
-            this.voucherPreview = res
+            const separadores = ['\n\n','\t','\n']
+            const valuesArr = this.voucherText.split (new RegExp (separadores.join('|'),'g')).filter(x=>x)
+            const filtered = valuesArr.filter((element) =>{
+                return !this.removeValFrom.includes(element);
+            }) // filtered contains no occurrences of removeValFrom
+            this.voucherPreview = filtered
             this.dialogVisible = true
-            // console.log("res", res)
         },
 
         removeItemVoucher(i) {
