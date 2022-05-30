@@ -30,6 +30,7 @@
                 <span slot="footer" class="dialog-footer">
                     <el-button @click="dialogVisible = false">Cancelar</el-button>
                     <el-button type="primary" @click="onClickCopy" :disabled="voucherPreview.length===0">Copiar</el-button>
+                    <el-button type="primary" @click="onClickSendWsp" :disabled="voucherPreview.length===0">Enviar a whatsapp</el-button>
                 </span>
             </el-dialog>
         </div>
@@ -79,6 +80,10 @@ export default {
             this.dialogVisible = false
         },
 
+        onClickSendWsp() {
+            let html = this.$refs.voucherPreview.innerHTML
+        },
+
         copyFormatted(html) {
             
             // Create container for the HTML
@@ -124,6 +129,7 @@ export default {
 
             // Remove the container
             // [6]
+            //console.log("container", container)
             document.body.removeChild(container)
         }
     }
