@@ -29,6 +29,7 @@ class GmailAPI {
 
     await axios(config)
       .then(async function (response) {
+        console.log("response",    response.data);
         accessToken = await response.data.access_token;
 
         // console.log("Access Token " + accessToken);
